@@ -1,11 +1,20 @@
-# ONECUE 홈페이지 개발킷 (v4, 2026-10-02)
+# ONECUE 홈페이지 개발킷 (v5, 2026-10-03)
 
 이 문서는 ONECUE 홈페이지 시안을 실제 홈페이지에 옮기는 개발자(또는 개발을 맡은 Claude)를 위한 인수인계 문서입니다.
 시안은 이미 완성된 단일 HTML 파일이고 외부 라이브러리 없이 동작합니다. 목표는 "디자인·카피·스크롤 동작을 그대로 유지하면서" 실제 도메인과 문의 흐름에 연결하는 것입니다.
 
-- 받기: `git clone https://github.com/Hoon712-code/onecue-devkit.git` 또는 압축본 https://github.com/Hoon712-code/onecue-devkit/releases/download/v4/onecue-devkit.zip
+- 받기: `git clone https://github.com/Hoon712-code/onecue-devkit.git` 또는 압축본 https://github.com/Hoon712-code/onecue-devkit/releases/download/v5/onecue-devkit.zip
 - 실제 동작 데모: https://claude.ai/artifact/7RQs3VAq4gwjYhqaSfQV8Q
 - 레퍼런스(스크롤 연출 원본): https://www.secretlevel.co/
+
+## 0. v5 변경 사항 (2026-10-03, v4 받은 분은 이것만 반영)
+
+- 01·03·06 장면 배경 영상을 "여러 영상을 잘라 붙인 분할 화면"에서 "광고 한 편 통 화면"으로 교체했습니다.
+- 바뀐 파일 11개 (파일명 그대로, `site/media/` 에 덮어쓰기만 하면 됩니다. HTML·CSS·JS 변경 없음):
+  - 01-hero.mp4 / 01-hero.jpg / 01-hero-thumb.jpg / 01-hero-m.mp4 / 01-hero-m.jpg
+  - 03-solution.mp4 / 03-solution.jpg / 03-solution-thumb.jpg
+  - 06-start.mp4 / 06-start.jpg / 06-start-thumb.jpg
+- CDN·캐시를 쓰고 있다면 위 파일은 캐시를 비우거나 파일 URL 에 `?v=5` 를 붙여 새 파일이 보이게 해 주세요.
 
 ## 1. 파일 구성
 
@@ -13,7 +22,7 @@
 site/
   index.html            완성 페이지 (HTML + CSS + JS 한 파일, 약 28KB)
   engine.reference.js   index.html 안 <script> 와 같은 코드 (읽기용 사본)
-  media/                영상·이미지 30개 (약 20MB)
+  media/                영상·이미지 30개 (약 23MB)
     NN-name.mp4         PC 배경 영상 1600x900
     NN-name-m.mp4       모바일 배경 영상 540x960
     NN-name.jpg         PC 포스터 (영상 로딩 전 첫 화면)
